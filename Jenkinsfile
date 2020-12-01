@@ -17,6 +17,7 @@ pipeline{
 				echo "Starting..."
 				bat 'mvn sonar:sonar'
 				echo "ending of quality check..."
+				echo "This is echo command."
 			}
 		}
 	}
@@ -29,6 +30,8 @@ pipeline{
  }
  }
 }
+
+
 @NonCPS
 def getChangeString() {
  MAX_MSG_LEN = 100
