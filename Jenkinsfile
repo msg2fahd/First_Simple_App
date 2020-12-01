@@ -20,6 +20,14 @@ pipeline{
 			}
 		}
 	}
+	 post {
+ success {
+ sendEmail("Successful")
+ }
+ failure {
+ sendEmail("Failed")
+ }
+ }
 }
 @NonCPS
 def getChangeString() {
@@ -127,4 +135,4 @@ def sendEmail(status) {
 //  to: "$EMAIL_RECIPIENTS", 
 //  subject: "Build $BUILD_NUMBER - " + status + " ($JOB_NAME)", 
 //  body: "Changes:\n " + getChangeString() + "\n\n Check console output at: $BUILD_URL/console" + "\n")
-// }
+// // }
