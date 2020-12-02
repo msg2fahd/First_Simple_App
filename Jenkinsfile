@@ -46,11 +46,14 @@ for (int i = 0; i < changeLogSets.size(); i++) {
         def files = new ArrayList(entry.affectedFiles)
         for (int k = 0; k < files.size(); k++) {
             def file = files[k]
-            updatestring += "->  ${file.editType.name} - ${file.path} \n"
+            updatestring += "->  ${file.editType.name} -  ${file.path} \n"
         }
     }
 }
-return updatestring
+ if (!updatestring) {
+ changeString = " - No new changes"
+ }
+ return changeString
 }
 def sendEmail(status) {
  mail (
@@ -78,10 +81,7 @@ def sendEmail(status) {
 
  
 
-//  if (!changeString) {
-//  changeString = " - No new changes"
-//  }
- // return changeString
+
 // }
 
 
