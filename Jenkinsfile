@@ -43,7 +43,7 @@ for (int i = 0; i < changeLogSets.size(); i++) {
         def files = new ArrayList(entry.affectedFiles)
         for (int k = 0; k < files.size(); k++) {
             def file = files[k]
-            echo "  ${file.editType.name} ${file.path}"
+            return echo "  ${file.editType.name} ${file.path}"
         }
     }
 }
@@ -77,7 +77,7 @@ def sendEmail(status) {
 //  if (!changeString) {
 //  changeString = " - No new changes"
 //  }
-//  return changeString
+ // return changeString
 // }
 
 
