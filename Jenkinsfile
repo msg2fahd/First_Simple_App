@@ -34,6 +34,7 @@ pipeline{
 echo "CHANGED FILES LOG."
  @NonCPS
  def getchangedfile(){
+ 	def updatestring =""
  def changeLogSets = currentBuild.changeSets
 for (int i = 0; i < changeLogSets.size(); i++) {
     def entries = changeLogSets[i].items
@@ -43,10 +44,11 @@ for (int i = 0; i < changeLogSets.size(); i++) {
         def files = new ArrayList(entry.affectedFiles)
         for (int k = 0; k < files.size(); k++) {
             def file = files[k]
-            return echo "  ${file.editType.name} ${file.path}"
+            updatestring += "  ${file.editType.name} ${file.path}"
         }
     }
 }
+return updatestring
 }
 def sendEmail(status) {
  mail (
