@@ -21,18 +21,19 @@ pipeline{
 			}
 		}
 	}
-	//  post {
- // success {
- // sendEmail("Successful")
- // }
- // failure {
- // sendEmail("Failed")
- // }
- // }
+	 post {
+ success {
+ sendEmail("Successful")
+ }
+ failure {
+ sendEmail("Failed")
+ }
+ }
 }
 
 echo "CHANGED FILES LOG."
  @NonCPS
+ def getchangedfile(){
  def changeLogSets = currentBuild.changeSets
 for (int i = 0; i < changeLogSets.size(); i++) {
     def entries = changeLogSets[i].items
@@ -45,6 +46,13 @@ for (int i = 0; i < changeLogSets.size(); i++) {
             echo "  ${file.editType.name} ${file.path}"
         }
     }
+}
+}
+def sendEmail(status) {
+ mail (
+ to: "$EMAIL_RECIPIENTS", 
+ subject: "Build $BUILD_NUMBER - " + status + " ($JOB_NAME)", 
+ body: "Changes:\n " + getchangedfile()  + "\n")
 }
 // def getChangeString() {
 //  MAX_MSG_LEN = 100
@@ -71,12 +79,7 @@ for (int i = 0; i < changeLogSets.size(); i++) {
 //  }
 //  return changeString
 // }
-// def sendEmail(status) {
-//  mail (
-//  to: "$EMAIL_RECIPIENTS", 
-//  subject: "Build $BUILD_NUMBER - " + status + " ($JOB_NAME)", 
-//  body: "Changes:\n " + getChangeString() + "\n\n Check console output at: $BUILD_URL/console" + "\n")
-// }
+
 
 //====================================================================================================
 // pipeline {
