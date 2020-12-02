@@ -51,9 +51,9 @@ for (int i = 0; i < changeLogSets.size(); i++) {
     }
 }
  if (!updatestring) {
- changeString = " - No new changes"
+ updatestring = " - No new changes"
  }
- return changeString
+ return updatestring
 }
 def sendEmail(status) {
  mail (
