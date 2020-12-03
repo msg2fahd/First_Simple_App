@@ -17,8 +17,8 @@ pipeline{
 				echo "Starting..."
 				bat 'mvn sonar:sonar'
 				echo "ending of quality check..."
-				// echo "dmfdfcd"
-				// echo "ewjgfygdbs"
+				echo "dmfdfcd"
+				echo "ewjgfygdbs"
 				
 			}
 		}
